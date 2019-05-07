@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class Landing extends Component {
+    constructor() {
+        super()
+        this.state = {
+            
+            users : [ 
+            { name: "rick", color: "rgb(50, 184, 170)" },
+            { name: "morty", color: "rgb(214, 214, 63)" },
+            { name: "summer", color: "rgb(161, 106, 161)" },
+            { name: "jerry", color: "rgb(3, 105, 3)" }
+        ]
+        }
+    }
+    
 
     render() {
 
@@ -16,10 +29,10 @@ class Landing extends Component {
                 </div>
             </div>
         )
-
-
-
     }
+
+
+
 }
 
 
