@@ -45,8 +45,16 @@ class App extends Component {
           </div>
           <span id="reflix-logo">REFLIX</span>
           <Route path="/" exact component={Landing} />
-          <Route path="/catalog" exact render={() => <Catalog state={this.state} handleRent={this.handleRent} 
+          
+          <Route path="/catalog" exact render={() => <Catalog 
+          inputText={this.state.updateInputText}
+          movies={this.state.inputText == "" 
+          ? this.state.movies 
+          : this.state.movies.filter(m => m.title.toLocaleLowerCase().includes(this.state.inputText.toLocaleLowerCase()))} 
+          handleRent={this.handleRent}
+          budget={this.state.budget} 
           updateInputText={this.updateInputText} />} />
+          
           <Route path="/catalog/:id" exact render={({ match }) => <MovieDetail match={match} state={this.state} />} />
 
 

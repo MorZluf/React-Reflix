@@ -37,7 +37,24 @@ body{
 
 h3{
   color: rgb(236, 212, 212);
+}
 
+input{
+  background-color: #1a1616;
+  color: rgb(236, 212, 212);
+  border: 2px solid #1a1616;
+  border-bottom: 2px solid rgb(236, 212, 212);
+  width: 40%;
+  margin-right: 30px;
+  border-radius: 20%;
+}
+
+button{
+  background-color: #1a1616;
+  color: rgb(236, 212, 212);
+  cursor: pointer;
+  border: 2px solid rgb(236, 212, 212);
+  
 }
 
 .user{
