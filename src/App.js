@@ -19,13 +19,16 @@ class App extends Component {
       budget: 10,
       inputText: ""
     }
-
   }
 
   handleRent = (id) => {
     let movies = [... this.state.movies]
     let isRented = movies[id].isRented
     movies[id].isRented = !isRented
+    isRented ? this.state.budget += 3 : this.state.budget -= 3
+    if (this.state.budget <= 0) {
+      return alert("Not anough money. Please return a movie and try again")
+    }
     this.setState({ movies })
   }
 
@@ -45,16 +48,16 @@ class App extends Component {
           </div>
           <span id="reflix-logo">REFLIX</span>
           <Route path="/" exact component={Landing} />
-          
-          <Route path="/catalog" exact render={() => <Catalog 
-          inputText={this.state.updateInputText}
-          movies={this.state.inputText == "" 
-          ? this.state.movies 
-          : this.state.movies.filter(m => m.title.toLocaleLowerCase().includes(this.state.inputText.toLocaleLowerCase()))} 
-          handleRent={this.handleRent}
-          budget={this.state.budget} 
-          updateInputText={this.updateInputText} />} />
-          
+
+          <Route path="/catalog" exact render={() => <Catalog
+            inputText={this.state.updateInputText}
+            movies={this.state.inputText == ""
+              ? this.state.movies
+              : this.state.movies.filter(m => m.title.toLocaleLowerCase().includes(this.state.inputText.toLocaleLowerCase()))}
+            handleRent={this.handleRent}
+            budget={this.state.budget}
+            updateInputText={this.updateInputText} />} />
+
           <Route path="/catalog/:id" exact render={({ match }) => <MovieDetail match={match} state={this.state} />} />
 
 
